@@ -6,7 +6,7 @@ $username = "root";
 $password = "";
 
 try {
-  $conn = new PDO("mysql:host=$servername;dbname=theluxuries", $username, $password);
+  $conn = new PDO("mysql:host=$servername;dbname=testlamdart", $username, $password);
   // set the PDO error mode to exception
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   return $conn;
@@ -101,5 +101,16 @@ function pdo_query($sql){
  unset($conn);
  }
 }
-pdo_get_connection()
+pdo_get_connection();
+
+function countAll($sql){
+  $dbh = pdo_get_connection();
+  $sql = $sql;
+
+  $stmt = $dbh->prepare($sql);
+   try { $stmt->execute();}
+   catch(PDOException $e){echo $e->getMessage();}
+
+return $stmt->rowCount();
+}
 ?>

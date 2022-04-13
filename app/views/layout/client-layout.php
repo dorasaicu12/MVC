@@ -1,4 +1,4 @@
-
+<div class="container">
     
     <?php 
        $this->render('block/header');
@@ -13,3 +13,4 @@
        $this->render('block/footer');
        
     ?>
+ </div>   
